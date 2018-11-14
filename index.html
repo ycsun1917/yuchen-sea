@@ -1,0 +1,85 @@
+<html>
+<head>
+	<title>My Mapbox GL JS Map</title>
+    
+    <!-- Link to JQuery library (used for modal) -->
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    
+    <!-- Link to Mapbox GL JS library -->
+	<script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.50.0/mapbox-gl.js'></script>
+    
+    <!-- Link to Mapbox GL JS css stylesheet -->
+	<link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.50.0/mapbox-gl.css' rel='stylesheet' />
+    
+    <!-- Link to our custom stylesheet -->
+	<link rel="stylesheet" href="map.css">
+    
+    
+</head>
+
+
+
+<body>
+
+	<!-- Map  -->	
+	<div id="map"></div>
+
+	<!-- Info window (shows info about parks when hovering over a park) 	
+	<div class='map-overlay' id='features'>
+		<h2>Public Art Spots In Seattle</h2>
+		<div id='info-window-body'>
+			<p>Seattle is teeming with artwork that we appreciate every day, artwork we forget is actually artwork because it’s so engrained in our routine, and artwork that we don’t even realize is there. We don’t always agree on whether the art is good—or even art—but there’s certainly something for everybody in our urban landscape.</p>
+		</div>
+	</div>--> 
+   
+    <div class='map-overlay' id='info-window'>
+    <div>
+      <h2>Public Art Spots In Seattle</h2>
+      <div id='info-window-body'>
+        <p>Hover over an art spot to learn more about it.</p>
+      </div>
+    </div>
+  </div>
+
+
+	<!-- Map legend (content populated by our javascript) -->	
+	<div class='map-overlay' id='legend'></div>	
+	
+	<!-- "About this map" modal (hidden by default) -->	
+	<div class='modal'>
+		<h2 class='modal-title'>Public Art Spots In Seattle</h2>
+		<div class='modal-body'><p>This is an base map of Seattle created in the Scripting Civic Engagement class at the University of Virginia (Fall 2018).</p><p>Map data courtesy of <a href='https://www.mapbox.com/studio/'>Mapbox Studio</a> </p><p>For questions or to improve this map, contact <a href='mailto:ys4ab@virginia.edu'>Yuchen Sun</a></p></div>
+		<button class='close-button'>&times;</button>  	<!-- A special "x" character (the multiply sign) used in close buttons -->
+	</div>
+	<div id='screen'></div>
+
+	
+    
+    <!--* slidebarhttps://onextrapixel.com/creating-a-swipeable-side-menu-for-the-web/-->
+    
+    <div class="container">
+    <div id="sidebar">
+        <!-- Button to hide or show "Site Node Tracker" modal -->	
+	<button type='button' class='button-default' id="about">Public Art Spots In Seattle</button> <!-- Button to hide or show modal -->
+        <div id="introduction"><p>Seattle is teeming with artwork that we appreciate every day, artwork we forget is actually artwork because it’s so engrained in our routine, and artwork that we don’t even realize is there. We don’t always agree on whether the art is good—or even art—but there’s certainly something for everybody in our urban landscape.</p></div>
+    </div>
+    <div class="main-content">
+        <div class="swipe-area"></div>
+        <a href="#" data-toggle=".container" id="sidebar-toggle">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </a>
+    </div>
+</div>
+    
+</body>
+    
+
+<!-- Link to our custom javascript -->	
+<script src="map.js">
+    
+    </script>
+
+    
+ </html>

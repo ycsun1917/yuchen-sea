@@ -1,0 +1,289 @@
+body {
+     margin: 0;
+padding: 0; }
+
+#map {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	width: 100vw;
+	height: 100vh;
+}
+
+.map-overlay {
+  position: absolute;
+  bottom: 10;
+  right: 0;
+  background: rgba(255, 255, 255, 0.8);
+  margin-right: 20px;
+  font-family: Courier, sans-serif;
+  overflow: auto;
+  border-radius: 1px;
+  padding: 12px;
+}
+
+#features {
+  top: 10px;
+  height: 300px;
+  margin-top: 10px;
+  width: 200px;
+  padding: 10px;
+}
+
+#legend {
+  padding: 10px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  line-height: 18px;
+  height: 100px;
+  margin-bottom: 40px;
+  width: 200px;
+}
+
+.legend-key {
+  display: inline-block;
+  border-radius: 100%;  /* adds a border radius, a value of 100% changes a box to a circle */
+  width: 10px;
+  height: 10px;
+  margin-right: 5px;
+}
+
+#info-window {
+    right: 0;
+    top:20px;
+    width: 382px;
+    height:350px;
+}
+
+.art-image {
+    width: 300px;
+    height: 190px;
+    padding: 12px;
+}
+
+/* Modals */
+#screen {
+	display: none;
+	width: 100vw;
+	height: 100vh;
+	position: absolute;
+	background-color: black;
+	opacity: 0.6;
+	z-index: 1;
+}
+
+.modal {
+	display: none;
+    width: 600px;
+    height: 300px;
+    position: absolute;
+    margin: 0 auto;
+    margin-top: 150px;
+    left: 0;
+    right: 0;
+    background-color: white;
+    z-index: 100;
+    padding: 25px;
+    font-family: Courier;
+    border-radius: 6;
+    opacity: 70%;
+}
+
+.modal .close-button {
+	color: #ccc;
+	position: absolute;
+	right: 0;
+	top: 0;
+	margin: 10px;
+	line-height: 30px;
+	font-size: 30px;
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+.modal .close-button:hover { 
+	color: #bbb;
+}
+
+
+
+/* Pop-ups */
+
+.mapboxgl-popup-tip {
+	border-top-color: #fc0096 !important;  /* the triangular shape at the bottom of the popup (tooltip) is formed by a thick border, where only the top border has a color, and the left, right, and bottom borders are transparent. Read more at https://css-tricks.com/snippets/css/css-triangle/ */
+}
+
+.mapboxgl-popup-content { 
+	background-color:#8D99AE;
+    border: 1px solid #fc0096;
+    box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.4);    
+    font-family: Courier;
+    font-size: larger;
+    color: #fc0096;
+}
+
+.mapboxgl-popup-close-button {
+    font-size: 30px;
+    color: #fc0096;
+}
+
+/* About this Map Button */
+.button-default {
+    
+    margin: 20px;
+    background: #f3f3f3;
+    color: #8D99AE;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 20px;
+    font-size: larger;
+    font-family: Courier;
+    cursor: pointer;    
+}
+
+.button-default:hover {
+    background: #f3f3f3;
+}
+
+.button-default:active {
+    background: #D2D5DD;
+}
+
+/* Typography */
+h2,
+h3 {
+  font-size: 1.2em;
+}
+
+h3 {
+  font-size: 1em;
+}
+
+p {
+  font-size: 0.85em;
+  text-align: left;
+}
+
+/*slidebar copy from https://onextrapixel.com/creating-a-swipeable-side-menu-for-the-web/*/
+
+body, html {
+    height: 100%;
+    margin: 0;
+    overflow:hidden;
+    font-family: Courier;
+    font-weight: 100;
+}
+.container {
+    position: relative;
+    height: 100%;
+    width: 10px;
+    left: 0;
+    -webkit-transition:  left 0.4s ease-in-out;
+    -moz-transition:  left 0.4s ease-in-out;
+    -ms-transition:  left 0.4s ease-in-out;
+    -o-transition:  left 0.4s ease-in-out;
+    transition:  left 0.4s ease-in-out;
+}
+.container.open-sidebar {
+    left: 240px;
+    width:50px;
+}
+ 
+.swipe-area {
+    position: absolute;
+    width: 50px;
+    left: 0;
+top: 0;
+    height: 100%;
+    background: #ffffff;
+    opacity:0.5;
+    z-index: 0;
+}
+#sidebar {
+    background: #8D99AE;
+    position: absolute;
+    width: 240px;
+    height: 100%;
+    left: -240px;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    opacity:0.8;
+}
+#introduction p {
+    position:absolute;
+    width:200px;
+    color:white;
+    box-sizing: border-box;
+    padding: 10px;
+    left:20px;
+    text-align:left;
+    font-size:1em;
+    
+}
+#sidebar ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+#sidebar ul li {
+    margin: 0;
+}
+#sidebar ul li a {
+    padding: 15px 20px;
+    font-size: 16px;
+    font-weight: 100;
+    color: white;
+    text-decoration: none;
+    display: block;
+    border-bottom: 1px solid #8D99AE;
+    -webkit-transition:  background 0.3s ease-in-out;
+    -moz-transition:  background 0.3s ease-in-out;
+    -ms-transition:  background 0.3s ease-in-out;
+    -o-transition:  background 0.3s ease-in-out;
+    transition:  background 0.3s ease-in-out;
+}
+#sidebar ul li:hover a {
+    background: #8D99AE;
+}
+.main-content {
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    position: relative;
+}
+.main-content .content{
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+padding-left: 60px;
+width: 100%;
+}
+.main-content .content h1{
+    font-weight: 100;
+}
+.main-content .content p{
+    width: 100%;
+    line-height: 160%;
+}
+.main-content #sidebar-toggle {
+    background: #8D99AE;
+    border-radius: 3px;
+    display: block;
+    position: relative;
+    padding: 10px 7px;
+    float: left;
+}
+.main-content #sidebar-toggle .bar{
+     display: block;
+    width: 18px;
+    margin-bottom: 3px;
+    height: 2px;
+    background-color: #fff;
+    border-radius: 1px;   
+}
+.main-content #sidebar-toggle .bar:last-child{
+     margin-bottom: 0;   
+}
