@@ -41,11 +41,11 @@ map.on('load', function() {	// the event listener that does some code after the 
 	
 	// the colors you use in the Mapbox Studio  to style the parks on the map for each category
 	var colors = [
-		'#f6f6f4', 
-		'#d2d1bc', 
-		'#c8cbbd', 
-		'#e9e9e7', 
-		'#cad2d3'
+		'#fcf7f8', 
+		'#8ea604', 
+		'#e8871e', 
+		'#c2b5a8', 
+		'#166088'
 	];
 
 	// add a legend to the map
@@ -65,7 +65,7 @@ map.on('load', function() {	// the event listener that does some code after the 
 	}
 
 	// replace contents of info window when user hovers on a state
-	map.on('mousemove', function(e) {	// event listener to do some code when the mouse moves
+	map.on('click', function(e) {	// event listener to do some code when the mouse moves
 
 	  var arts = map.queryRenderedFeatures(e.point, {
 	    layers: ['artin_text']	// replace 'cville-parks' with the name of your layer, if using a different layer
@@ -77,7 +77,7 @@ map.on('load', function() {	// the event listener that does some code after the 
           $('#info-window-body').html('<h3><strong>' + arts[0].properties.title + '</strong></h3><p>' + arts[0].properties.park_name + ' PARK</p><img class="art-image" src="img/' + arts[0].properties.title + '.jpg">');
 
 	  } else {
-	    document.getElementById('info-window-body').innerHTML = '<p>Not hovering over an <strong>art spot</strong> right now.</p>';
+	    document.getElementById('info-window-body').innerHTML = '<p>Click on an <strong>art spot</strong> to learn more about it.</p>';
 	  }
 	
 	});
@@ -166,22 +166,5 @@ $('.modal .close-button').on('click', function() {
 	
 });
 
- map.on('mousemove', function(e) {   // Event listener to do some code when the mouse moves, see https://www.mapbox.com/mapbox-gl-js/api/#events. 
-
-        var art = map.queryRenderedFeatures(e.point, {    
-            layers: ['publicarttext']    // replace 'cville-parks' with the name of the layer you want to query (from your Mapbox Studio map, the name in the layers panel). For more info on queryRenderedFeatures, see the example at https://www.mapbox.com/mapbox-gl-js/example/queryrenderedfeatures/. Documentation at https://www.mapbox.com/mapbox-gl-js/api/#map#queryrenderedfeatures.
-        });
-              
-        if (art.length > 0) {   // if statement to make sure the following code is only added to the info window if the mouse moves over a state
-
-            $('#info-window-body').html('<h3><strong>' + parks[0].properties.PARKNAME + '</strong></h3><p>' + parks[0].properties.PARK_TYPE + ' PARK</p><img class="park-image" src="img/' + parks[0].properties.PARKNAME + '.jpg">');
-
-        } else {    // what shows up in the info window if you are NOT hovering over a park
-
-            $('#info-window-body').html('<p>Not hovering over a <strong>Public Art Spot</strong> right now.</p>');
-            
-        }
-
-    });
-
+ 
 

@@ -87,7 +87,7 @@ padding: 0; }
     padding: 25px;
     font-family: Courier;
     border-radius: 6;
-    opacity: 70%;
+    opacity: 80%;
 }
 
 .modal .close-button {
@@ -209,7 +209,7 @@ top: 0;
     left: -240px;
     box-sizing: border-box;
     -moz-box-sizing: border-box;
-    opacity:0.8;
+    opacity:0.9;
 }
 #introduction p {
     position:absolute;
