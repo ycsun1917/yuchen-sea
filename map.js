@@ -11,10 +11,32 @@
 // Provide access token
 mapboxgl.accessToken = 'pk.eyJ1IjoieWNzdW4iLCJhIjoiY2pnMDlibDNwMTZhcDJ3cGNvMzA1dTdvcyJ9.sZE20YpLv9-iVLxmt_VzUg';
 
-   var map = new mapboxgl.Map({
-     container: 'map',
-     style: 'mapbox://styles/ycsun/cjg6v0c0a0r9v2rpax2zfzi7w'
-   });
+// add filter
+var places = {
+    "type": "FeatureCollection",
+    "features": [{
+        "type": "Feature",
+        "properties": {
+            "icon": "airport"
+        },
+        "geometry": {
+            "type": "Point",
+            "coordinates": [-122.244,47.590]
+        }
+    }, {
+        "type": "Feature",
+        "properties": {
+            "icon": "theatre"
+        },
+        "geometry": {
+            "type": "Point",
+            "coordinates": [-122.232,47.577]
+        }
+    }]
+};
+
+var layerIDs = []; // Will contain a list used to filter against.
+var filterInput = document.getElementById('filter-input');
 
 
 // Link to a mapbox studio style
@@ -144,6 +166,55 @@ $(".swipe-area").swipe({
       // Add the popup to the map
       popup.addTo(map);  // replace "map" with the name of the variable in line 28, if different
     });
+    
+    // filter
+    // Add a GeoJSON source containing place coordinates and information.
+    map.addSource('places', {
+        "type": "geojson",
+        "data": places
+    });
+    
+    places.features.forEach(function(feature) {
+        var symbol = feature.properties['icon'];
+        var layerID = 'poi-' + symbol;
+
+        // Add a layer for this symbol type if it hasn't been added already.
+        if (!map.getLayer(layerID)) {
+            map.addLayer({
+                "id": layerID,
+                "type": "symbol",
+                "source": "places",
+                "layout": {
+                    "icon-image": symbol + "-11",
+                    "icon-allow-overlap": true,
+                    "text-field": symbol,
+                    "text-font": ["Open Sans Bold", "Arial Unicode MS Bold"],
+                    "text-size": 11,
+                    "text-transform": "uppercase",
+                    "text-letter-spacing": 0.05,
+                    "text-offset": [0, 1.5]
+                },
+                "paint": {
+                    "text-color": "#202",
+                    "text-halo-color": "#fff",
+                    "text-halo-width": 2
+                },
+                "filter": ["==", "icon", symbol]
+            });
+
+            layerIDs.push(layerID);
+        }
+    });
+
+    filterInput.addEventListener('keyup', function(e) {
+        // If the input value matches a layerID set
+        // it's visibility to 'visible' or else hide it.
+        var value = e.target.value.trim().toLowerCase();
+        layerIDs.forEach(function(layerID) {
+            map.setLayoutProperty(layerID, 'visibility',
+                layerID.indexOf(value) > -1 ? 'visible' : 'none');
+        });
+    });
 
 });
 
@@ -165,6 +236,10 @@ $('.modal .close-button').on('click', function() {
 	$('.modal').fadeToggle();  // toggles visibility of background screen when clicked (shows if hidden, hides if visible)	                        
 	
 });
+
+
+
+
 
  
 

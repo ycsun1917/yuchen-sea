@@ -22,7 +22,35 @@
 <body>
 
 	<!-- Map  -->	
-	<div id="map"></div>
+	<!-- <div id="map"></div> -->
+    <style>
+    .filter-ctrl {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        z-index: 1;
+        width: 180px;
+    }
+
+    .filter-ctrl input[type=text] {
+        font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+        width: 100%;
+        border: 0;
+        background-color: #fff;
+        height: 40px;
+        margin: 0;
+        color: rgba(0,0,0,.5);
+        padding: 10px;
+        box-shadow: 0 0 0 2px rgba(0,0,0,0.1);
+        border-radius: 3px;
+    }
+</style>
+<div id='map'></div>
+<div class='filter-ctrl'>
+    <input id='filter-input' type='text' name='filter' placeholder='Filter by name' />
+</div>
+    
+    
 
 	<!-- Info window (shows info about parks when hovering over a park) 	
 	<div class='map-overlay' id='features'>
@@ -79,7 +107,14 @@
 <!-- Link to our custom javascript -->	
 <script src="map.js">
     
-    </script>
+</script>
+    
+<script>
+mapboxgl.accessToken = 'pk.eyJ1IjoieWNzdW4iLCJhIjoiY2pnMDlibDNwMTZhcDJ3cGNvMzA1dTdvcyJ9.sZE20YpLv9-iVLxmt_VzUg';
+
+</script>
+    
+    
 
     
  </html>
